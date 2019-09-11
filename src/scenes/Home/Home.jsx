@@ -32,8 +32,7 @@ function Home() {
         />
         <Paragraph>{homeConstants.text}</Paragraph>
       </Container>
-      {`Test: ${toggle}`}
-        <Menu />
+     <Menu />
     </>
   )
 }
