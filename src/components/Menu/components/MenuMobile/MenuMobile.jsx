@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 
-import { Container, Header } from '../../components';
-import { MenuContext } from '../../../../store/contexts';
+import { Container, Header } from 'components/Menu/components';
 
+import { MenuContext } from 'store/contexts';
 
 function MenuMobile() {
   const [toggle] = useContext(MenuContext);

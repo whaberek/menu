@@ -7,4 +7,3 @@ function MenuDesktop() {
 }
 
 export { MenuDesktop };
-

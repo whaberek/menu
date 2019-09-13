@@ -11,15 +11,17 @@ function Menu() {
   const [toggle] = useContext(MenuContext);
 
   return (
-    <CSSTransition
-      in={toggle}
-      appear={true}
-      timeout={700}
-      classNames="fade"
-    >
-      <MenuMobile />
-    </CSSTransition>
-  )
+    <>
+      <CSSTransition
+        in={toggle}
+        appear={true}
+        timeout={500}
+        classNames="fade"
+      >
+        <MenuMobile />
+      </CSSTransition>
+    </>
+  );
 }
 
 export { Menu };
