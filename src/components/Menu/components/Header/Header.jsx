@@ -12,9 +12,10 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: ${({ isMobile }) => (isMobile ? 30 : 10)}px;
 `;
 
-const HeaderContainer = styled.div`
+const HeaderWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,19 +45,22 @@ function Header() {
   }, [setToggle]);
 
   return (
-    <Container>
-      <HeaderContainer isMobile={isMobile}>
+    <Container isMobile={isMobile}>
+      <HeaderWrapper isMobile={isMobile}>
         <img alt="Awaymo logo" src={require('assets/logo.svg')}/>
         <CrossContainer onClick={handleClick}>
           <FontAwesomeIcon icon={faTimes} color={colors.white} />
         </CrossContainer>
-      </HeaderContainer>
+      </HeaderWrapper>
     </Container>
   );
 }
 
+Container.propTypes = {
+  isMobile: PropTypes.bool.isRequired,
+};
 
-HeaderContainer.propTypes = {
+HeaderWrapper.propTypes = {
   isMobile: PropTypes.bool.isRequired,
 };
 

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Transition } from 'react-transition-group';
 
-import { Container, Header } from './components';
+import { Container, Header, Profile } from './components';
 
 import { MenuContext } from 'store/contexts';
 
@@ -16,6 +16,9 @@ function Menu() {
       {state => (
         <Container state={state} toggle={toggle}>
           <Header />
+          <Profile />
+          {/* TODO: Add menu items from constants(make it reusable) */}
+          {/* TODO: Write test for all components using react-testing-library */}
         </Container>
       )}
     </Transition>
