@@ -13,7 +13,6 @@ const menuConstants = [
       desktop: "My booking",
     },
     icon: 'airplane',
-    device: ['mobile', 'desktop']
   },
 ];
 

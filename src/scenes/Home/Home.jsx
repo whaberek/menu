@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import styled from 'styled-components';
 
-import { Button, Menu, Paragraph } from 'components'
+import { Button, Menu, Paragraph } from 'components';
 
-import { homeConstants } from 'shared/constants'
-import { MenuContext } from 'store/contexts'
+import { homeConstants } from 'shared/constants';
+import { MenuContext } from 'store/contexts';
 
 const Container = styled.div`
   text-align: center;
@@ -19,22 +19,24 @@ const Container = styled.div`
 `;
 
 function Home() {
-  const [toggle, setToggle] = useContext(MenuContext);
+  const [, setToggle] = useContext(MenuContext);
 
-  const toggleMenu = () => setToggle(!toggle);
+  const handleClick = useCallback(() => {
+    setToggle(true)
+  }, [setToggle]);
 
   return (
     <>
       <Container>
         <Button
-          onClick={() => toggleMenu()}
+          onClick={handleClick}
           label={homeConstants.menu}
         />
-        <Paragraph>{homeConstants.text}</Paragraph>
+        <Paragraph text={homeConstants.text} />
       </Container>
-     <Menu />
+      <Menu />
     </>
-  )
+  );
 }
 
 export { Home };
