@@ -1,2 +1,2 @@
 export { homeConstants } from './homeConstants';
-export { menuConstants } from './menuConstants';
+export { mobileConstants, desktopConstants } from './menuConstants';

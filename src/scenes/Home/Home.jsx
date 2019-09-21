@@ -1,14 +1,15 @@
-import React, { useCallback, useContext } from 'react';
-import styled from 'styled-components';
+import React, { useContext } from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import { Button, Menu, Paragraph } from 'components';
 
 import { homeConstants } from 'shared/constants';
+import { colors } from 'shared/variables';
 import { MenuContext } from 'store/contexts';
 
 const Container = styled.div`
   text-align: center;
-  background-color: #282c34;
+  background-color: ${colors.veryDarkGrayishBlue};
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,15 +19,20 @@ const Container = styled.div`
   color: white;
 `;
 
-function Home() {
-  const [, setToggle] = useContext(MenuContext);
+const GlobalStyle = createGlobalStyle`
+  body {
+    overflow: ${({ toggle}) => (toggle ? 'hidden' : 'auto')};
+  }
+`;
 
-  const handleClick = useCallback(() => {
-    setToggle(true)
-  }, [setToggle]);
+function Home() {
+  const [toggle, setToggle] = useContext(MenuContext);
+
+  const handleClick = () => setToggle(true);
 
   return (
     <>
+      <GlobalStyle toggle={toggle} />
       <Container>
         <Button
           onClick={handleClick}

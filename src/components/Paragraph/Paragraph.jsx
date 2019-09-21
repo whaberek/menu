@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import { colors } from 'shared/variables'
+
 const Container = styled.p`
-  width: 300px;
+  max-width: 300px;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: ${colors.white};
 `;
 
 const Paragraph = ({ text }) => <Container>{text}</Container>;

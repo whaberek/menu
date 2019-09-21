@@ -8,25 +8,40 @@ import { useWindowDimensions } from 'shared/hooks';
 import { profileConstants } from './profileConstants';
 
 const Container = styled.div`
-  width: ${({isMobile}) => (isMobile ? '100%' : 'fit-content')};
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: ${({isMobile}) => (isMobile ? 'center' : 'flex-start')};;
   align-items: center;
   flex-direction: ${({isMobile}) => (isMobile ? 'column' : 'row')};
-  margin: 10px;
+  margin-bottom: 5px;
   padding: 10px 0;
-  border-bottom: ${({isMobile}) => (isMobile ? 'none' : `1px solid ${colors.white}`)};
+  border-bottom: ${({isMobile}) => (!isMobile && `1px solid ${colors.opacityWhite}`)};
 `;
 
 const PictureContainer = styled.div`
+  position: relative;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
   background: ${colors.white};
   border-radius: 50%;
   margin-right: ${({isMobile}) => (!isMobile && '15px')};
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-left: ${({isMobile}) => (!isMobile && '4px')};
+  
+  ${({isMobile}) => !isMobile && `
+    &:before {
+        content: '';
+        position: absolute;
+        left: -4px;
+        top: -4px;
+        width: 44px;
+        height: 44px;
+        border: 2px solid ${colors.white};
+        border-radius: 50%;
+    }`
+} 
 `;
 
 const Picture = styled.img`
@@ -45,14 +60,8 @@ const Text = styled.p`
 `;
 
 // TODO: Add circle around picture container
-function Profile() {
+function Profile({user}) {
   const {isMobile} = useWindowDimensions();
-
-  const user = {
-    firstName: 'Dominik',
-    lastName: 'Biel',
-    balance: '1,500.00', // It depends on what will from BE - this form easy formatting
-  };
 
   const nameLabel = isMobile ? user.firstName : `${user.firstName} ${user.lastName}`;
   const balanceLabel = isMobile ? profileConstants.label : profileConstants.available;

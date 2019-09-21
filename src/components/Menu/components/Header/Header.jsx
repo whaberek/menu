@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,10 +9,12 @@ import { colors } from 'shared/variables';
 import { useWindowDimensions } from 'shared/hooks';
 
 const Container = styled.div`
+  position: fixed;
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: ${({ isMobile }) => (isMobile ? 30 : 10)}px;
+  background: ${colors.softRed};
+  z-index: 1;
 `;
 
 const HeaderWrapper = styled.div`
@@ -23,8 +25,8 @@ const HeaderWrapper = styled.div`
   height: 60px;
   border-bottom: ${({ isMobile }) => (
     isMobile
-      ? `2px solid ${colors.white}`
-      : `1px solid ${colors.white}`
+      ? `1px solid ${colors.white}`
+      : `2px solid ${colors.white}`
   )};
 `;
 
@@ -40,9 +42,7 @@ function Header() {
 
   const { isMobile } = useWindowDimensions();
 
-  const handleClick = useCallback(() => {
-    setToggle(false)
-  }, [setToggle]);
+  const handleClick = () => setToggle(false);
 
   return (
     <Container isMobile={isMobile}>

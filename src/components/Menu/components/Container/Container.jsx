@@ -14,6 +14,7 @@ const Container = styled.div`
   top: 0;
   background: ${colors.softRed};
   transition: opacity 500ms ease-out;
+  overflow: auto;
   opacity: ${({state}) => {
     switch (state) {
       case stateConstants.entered:
@@ -29,7 +30,6 @@ const Container = styled.div`
 
 Container.propTypes = {
   state: PropTypes.oneOf(Object.values(stateConstants)).isRequired,
-  toggle: PropTypes.bool.isRequired,
 };
 
 export { Container };
