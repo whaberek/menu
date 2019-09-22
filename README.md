@@ -2,6 +2,12 @@
 
 The object of this test is to create an animated menu
 
+## TODO
+
+* Write test for whole functionality and components using 'react-testing-library'
+* Add and configure eslint
+* Add prettier and husky
+
 ## Getting Started
 
 Clone this repository in your local machine.
