@@ -4,24 +4,23 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { Button, Menu, Paragraph } from 'components';
 
 import { homeConstants } from 'shared/constants';
-import { colors } from 'shared/variables';
 import { MenuContext } from 'store/contexts';
 
 const Container = styled.div`
   text-align: center;
-  background-color: ${colors.veryDarkGrayishBlue};
+  background-color: ${({ theme }) => theme.veryDarkGrayishBlue};
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: ${({ theme }) => theme.white};
 `;
 
 const GlobalStyle = createGlobalStyle`
   body {
-    overflow: ${({ toggle}) => (toggle ? 'hidden' : 'auto')};
+    overflow: ${({toggle}) => (toggle ? 'hidden' : 'auto')};
   }
 `;
 
@@ -32,15 +31,15 @@ function Home() {
 
   return (
     <>
-      <GlobalStyle toggle={toggle} />
+      <GlobalStyle toggle={toggle}/>
       <Container>
         <Button
           onClick={handleClick}
           label={homeConstants.menu}
         />
-        <Paragraph text={homeConstants.text} />
+        <Paragraph text={homeConstants.text}/>
       </Container>
-      <Menu />
+      <Menu/>
     </>
   );
 }

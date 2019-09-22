@@ -4,24 +4,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
 import { useWindowDimensions } from 'shared/hooks';
-import { colors } from 'shared/variables';
+import { theme } from 'shared/variables/theme';
 
 const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border-bottom: ${({isMobile, withoutBorder}) => (
-    isMobile && !withoutBorder && `1px solid ${colors.opacityWhite}`
+  border-bottom: ${({isMobile, withoutBorder, theme}) => (
+    isMobile && !withoutBorder && `1px solid ${theme.opacityWhite}`
   )};
   padding: ${({isMobile}) => (isMobile && '15px 0')};
+  margin: ${({isMobile}) => (!isMobile && '5px 0')};
+  cursor: pointer;
 `;
 
 const Label = styled.p`
   font-weight: 700;
-  font-size: 1.2em;
+  font-size: ${({isMobile}) => (isMobile ? '1.2em' : '1.6em')};
   margin: 0;
-  color: ${colors.white};
+  color: ${({ theme }) => theme.white};
 `;
 
 const IconContainer = styled.div`
@@ -37,11 +39,11 @@ function Item({label, icon, rotate, withoutBorder}) {
       {
         (isMobile && icon) && (
           <IconContainer rotate={rotate}>
-            <FontAwesomeIcon icon={icon} color={colors.white}/>
+            <FontAwesomeIcon icon={icon} color={theme.white}/>
           </IconContainer>
         )
       }
-      <Label>{label}</Label>
+      <Label isMobile={isMobile}>{label}</Label>
     </Container>
   );
 }
@@ -51,6 +53,10 @@ Item.propTypes = {
   icon: PropTypes.object,
   rotate: PropTypes.number,
   withoutBorder: PropTypes.bool,
+};
+
+IconContainer.propTypes = {
+  rotate: PropTypes.number,
 };
 
 Container.propTypes = {

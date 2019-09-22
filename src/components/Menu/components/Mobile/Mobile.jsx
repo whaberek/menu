@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { mobileConstants } from 'shared/constants'
+import { useWindowDimensions } from 'shared/hooks';
 
 import { Item, Profile } from '../';
-import { useWindowDimensions } from 'shared/hooks';
 
 const Container = styled.nav`
   width: 100%;
@@ -12,13 +12,14 @@ const Container = styled.nav`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 90px;
+  margin-top: 80px;
 `;
 
 const MobileWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: calc(100% - 100px);
+  padding-bottom: 65px;
 `;
 
 function Mobile({user}) {

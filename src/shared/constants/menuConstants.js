@@ -57,4 +57,10 @@ const desktopConstants = {
   },
 };
 
-export { mobileConstants, desktopConstants };
+const menuConstants = {
+  label: 'We\'re here to help',
+  phone: '+44 (0) 20 8050 3459',
+  email: 'support@awaymo.com',
+};
+
+export { menuConstants, mobileConstants, desktopConstants };

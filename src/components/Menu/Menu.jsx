@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Transition } from 'react-transition-group';
 
-import { Container, Desktop, Header, Mobile } from './components';
+import { Container, Desktop, Footer, Header, Mobile } from './components';
 
 import { MenuContext } from 'store/contexts';
 import { useWindowDimensions } from 'shared/hooks';
@@ -30,6 +30,7 @@ function Menu() {
               ? <Mobile user={user} />
               : <Desktop user={user} />
           }
+          <Footer />
         </Container>
       )}
     </Transition>

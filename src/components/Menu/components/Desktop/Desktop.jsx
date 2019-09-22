@@ -27,7 +27,7 @@ function Desktop({user}) {
   return (
     <Container>
       <DesktopWrapper>
-        <Column size="200px">
+        <Column size="280px">
           <Item label={desktopConstants.home.label} />
           <Item label={desktopConstants.flights.label} />
           <br/>

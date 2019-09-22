@@ -5,15 +5,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { MenuContext } from 'store/contexts';
-import { colors } from 'shared/variables';
+import { theme } from 'shared/variables';
 import { useWindowDimensions } from 'shared/hooks';
 
 const Container = styled.div`
+  top: 0;
   position: fixed;
   width: 100%;
   display: flex;
   justify-content: center;
-  background: ${colors.softRed};
+  background: ${({ theme }) => theme.softRed};
   z-index: 1;
 `;
 
@@ -23,10 +24,10 @@ const HeaderWrapper = styled.div`
   align-items: center;
   width: calc(100% - 100px);
   height: 60px;
-  border-bottom: ${({ isMobile }) => (
+  border-bottom: ${({ isMobile, theme }) => (
     isMobile
-      ? `1px solid ${colors.white}`
-      : `2px solid ${colors.white}`
+      ? `1px solid ${theme.opacityWhite}`
+      : `1px solid ${theme.white}`
   )};
 `;
 
@@ -45,20 +46,16 @@ function Header() {
   const handleClick = () => setToggle(false);
 
   return (
-    <Container isMobile={isMobile}>
+    <Container>
       <HeaderWrapper isMobile={isMobile}>
         <img alt="Awaymo logo" src={require('assets/logo.svg')}/>
         <CrossContainer onClick={handleClick}>
-          <FontAwesomeIcon icon={faTimes} color={colors.white} />
+          <FontAwesomeIcon icon={faTimes} color={theme.white} />
         </CrossContainer>
       </HeaderWrapper>
     </Container>
   );
 }
-
-Container.propTypes = {
-  isMobile: PropTypes.bool.isRequired,
-};
 
 HeaderWrapper.propTypes = {
   isMobile: PropTypes.bool.isRequired,

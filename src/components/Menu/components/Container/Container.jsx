@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { colors } from 'shared/variables';
-
 import { stateConstants } from './stateConstants';
 
 const Container = styled.div`
@@ -12,7 +10,7 @@ const Container = styled.div`
   height: 100%;
   left: 0;
   top: 0;
-  background: ${colors.softRed};
+  background: ${({ theme }) => theme.softRed};
   transition: opacity 500ms ease-out;
   overflow: auto;
   opacity: ${({state}) => {

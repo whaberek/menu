@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { colors } from 'shared/variables';
 import { useWindowDimensions } from 'shared/hooks';
 
 import { profileConstants } from './profileConstants';
@@ -15,7 +14,7 @@ const Container = styled.div`
   flex-direction: ${({isMobile}) => (isMobile ? 'column' : 'row')};
   margin-bottom: 5px;
   padding: 10px 0;
-  border-bottom: ${({isMobile}) => (!isMobile && `1px solid ${colors.opacityWhite}`)};
+  border-bottom: ${({isMobile, theme}) => (!isMobile && `1px solid ${theme.opacityWhite}`)};
 `;
 
 const PictureContainer = styled.div`
@@ -25,12 +24,12 @@ const PictureContainer = styled.div`
   height: 40px;
   justify-content: center;
   align-items: center;
-  background: ${colors.white};
+  background: ${({ theme }) => theme.white};
   border-radius: 50%;
   margin-right: ${({isMobile}) => (!isMobile && '15px')};
   margin-left: ${({isMobile}) => (!isMobile && '4px')};
   
-  ${({isMobile}) => !isMobile && `
+  ${({isMobile, theme}) => !isMobile && `
     &:before {
         content: '';
         position: absolute;
@@ -38,7 +37,7 @@ const PictureContainer = styled.div`
         top: -4px;
         width: 44px;
         height: 44px;
-        border: 2px solid ${colors.white};
+        border: 2px solid ${theme.white};
         border-radius: 50%;
     }`
 } 
@@ -55,11 +54,10 @@ const TextContainer = styled.div`
 
 const Text = styled.p`
   font-weight: ${({isMobile}) => (isMobile ? 600 : 900)};
-  color: ${colors.white};
+  color: ${({ theme }) => theme.white};
   margin: 0;
 `;
 
-// TODO: Add circle around picture container
 function Profile({user}) {
   const {isMobile} = useWindowDimensions();
 
